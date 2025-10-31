@@ -164,6 +164,15 @@
   --shadow-2xl: var(--shadow-2xl);
 }
 
+@layer utilities {
+  .h1{
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground tracking-tight mb-5;
+  }
+  .card-gradient {
+    @apply bg-linear-to-br from-background to-emerald-800 rounded-lg border border-emerald-900/60 p-6 group-hover:border-slate-700;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
