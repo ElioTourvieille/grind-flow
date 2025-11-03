@@ -3,16 +3,17 @@ import { CardContent } from '@/components/ui/card'
 import SignupForm from './signup-form'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ClubIcon } from 'lucide-react'
 
 export default function SignupPage() {
   return (
     <div className='flex flex-col items-center justify-center gap-4'>
-        <h1 className='text-3xl font-bold mb-8 text-center'>Créer un compte Grind</h1>
+        <h1 className='text-3xl font-bold mb-8 text-center'>Créer un compte Grind Flow</h1>
         <Card className="w-full max-w-md">
             <CardHeader>
                 <CardTitle className='flex items-center justify-center gap-2'>
-                    <ClubIcon className="w-8 h-8 text-white bg-primary rounded-full p-1" />
+                    <div className="w-8 h-8 rounded-lg bg-linear-to-br from-emerald-700 to-emerald-300 border-2 border-emerald-500 flex items-center justify-center">
+                        <span className="text-lg font-bold text-white">G</span>
+                    </div>
                 </CardTitle>
             </CardHeader>
             <CardContent>
@@ -20,8 +21,8 @@ export default function SignupPage() {
             </CardContent>
             <CardFooter>
                 <p className='text-sm text-muted-foreground'>Vous avez déjà un compte ?{" "}
-                    <Link href="/auth/signin" className='text-blue-500'>
-                        <Button variant="link" className='p-0 text-sm text-blue-500'>Connexion</Button>
+                    <Link href="/sign-in" className='hover:underline'>
+                        <Button variant="link" className='p-0 text-sm text-primary'>Connexion</Button>
                     </Link>
                 </p>
             </CardFooter>

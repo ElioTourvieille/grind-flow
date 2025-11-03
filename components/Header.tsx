@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./ui/button";
 
 const Header = () => {
@@ -10,9 +11,11 @@ const Header = () => {
           </div>
           <span className="text-xl font-bold text-foreground">Grind Flow</span>
         </div>
-        <Button variant="primary" size="lg">
-          Se connecter
-        </Button>
+        <Link href="/sign-in">
+          <Button variant="primary" size="lg">
+            Se connecter
+          </Button>
+        </Link>
       </div>
     </header>
   );

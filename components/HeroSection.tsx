@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { Button } from "./ui/button";
-import { DiscordLogoIcon } from "@radix-ui/react-icons";
+import DiscordButton from "./DiscordButton";
 
 export function HeroSection() {
   return (
@@ -25,13 +24,21 @@ export function HeroSection() {
             </span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-white max-w-xl leading-relaxed">
-            Grind Flow est une plateforme pour maîtriser votre grind. Elle vous aide à rester en flow et améliorer votre étude du poker, boosté par l'IA.
+            Grind Flow est une plateforme pour maîtriser votre grind. Elle vous
+            aide à rester en flow et améliorer votre étude du poker, boosté par
+            l'IA.
           </p>
-          <Button variant="primary" size="xl" className="font-semibold"><DiscordLogoIcon className="size-6 mr-2"/>Essayer avec Discord</Button>
+          <DiscordButton />
         </div>
 
         <div className="shrink-0 w-full max-w-[45%] lg:max-w-[50%] z-20 border border-emerald-900 rounded-xl p-4 shadow-xl bg-background relative overflow-hidden">
-          <Image src="/hero.png" alt="Hero" width={600} height={600} className="z-20 rounded-xl h-auto w-full"/>
+          <Image
+            src="/hero.png"
+            alt="Hero"
+            width={600}
+            height={600}
+            className="z-20 rounded-xl h-auto w-full"
+          />
         </div>
       </div>
     </section>

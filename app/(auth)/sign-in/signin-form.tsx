@@ -8,7 +8,7 @@ import { SignInValues } from '@/lib/validation'
 import { SignInFormSchema } from '@/lib/validation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { signIn } from '@/auth/auth-client';
+import { signIn, onDiscordSignIn } from '@/auth/auth-client';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { DiscordLogoIcon } from '@radix-ui/react-icons';
@@ -36,10 +36,11 @@ export default function SigninForm() {
             form.reset()
         },
         onSuccess: () => {
-            toast.dismiss()
-            router.push('/user')
-            router.refresh()
-            toast.success('Connexion réussie')
+            toast.dismiss();
+            toast.success('Connexion réussie');
+            // La synchronisation sera faite automatiquement par le dashboard
+            router.push('/dashboard');
+            router.refresh();
         },
         onError: (error) => {
           toast.dismiss()
@@ -49,21 +50,9 @@ export default function SigninForm() {
     })
   }
 
-  async function onDiscordSignIn() {
-     await signIn.social(
-      { 
-        provider: "discord", 
-        callbackURL: "/user" 
-      }, {
-        onSuccess: () => {},
-        onError: (error) => {
-          toast.error(error.error.message)
-      }
-    })
-  }
 
   return (
-    <div className='flex flex-col items-center justify-center gap-4'>
+    <div className='flex flex-col items-center justify-center gap-4 w-full'>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
         <FormField
@@ -92,13 +81,12 @@ export default function SigninForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className='w-full'>Connexion</Button>
+        <Button variant="primary" type="submit" className='w-full'>Connexion</Button>
       </form>
       <p className='text-sm text-muted-foreground'>Ou</p>
       <Button 
-        variant="outline"
         onClick={() => onDiscordSignIn()}
-        className="bg-[#5865F2] hover:bg-[#5865F2]/80 text-white"
+        className="bg-[#5865F2] hover:bg-[#5865F2]/80 text-white border-2 border-indigo-400"
       >
         <DiscordLogoIcon className='w-4 h-4 mr-2' /> Connexion avec Discord
       </Button>

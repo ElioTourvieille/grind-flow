@@ -38,9 +38,10 @@ export default function SignupForm() {
             form.reset()
         },
         onSuccess: () => {
-            toast.dismiss()
-            router.push('/user')
-            toast.success('Inscription réussie')
+            toast.dismiss();
+            toast.success('Inscription réussie');
+            // La synchronisation sera faite automatiquement par le dashboard
+            router.push('/dashboard');
         },
         onError: (error) => {
             toast.dismiss()
@@ -105,7 +106,7 @@ export default function SignupForm() {
             </FormItem>
           )}
         />        
-        <Button type="submit" className='w-full'>S'inscrire</Button>
+        <Button variant="primary" type="submit" className='w-full'>S'inscrire</Button>
       </form>
     </Form>
   )
